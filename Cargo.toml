@@ -1,0 +1,17 @@
+[profile.release]
+panic = 'unwind'
+
+[workspace]
+members = [
+    'node',
+    'runtime',
+    'pallets/schema',
+    'pallets/verified_credential',
+    'pallets/validator_set',
+    'pallets/treasury',
+    'pallets/balances',
+    'pallets/did',
+    'pallets/node-authorization',
+    'pallets/vc',
+    'pallets/tokens'
+]

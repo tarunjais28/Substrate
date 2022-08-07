@@ -1,0 +1,42 @@
+[package]
+name = "treasury"
+authors = [ 'Metablockchain' ]
+version = "1.0.0"
+edition = "2018"
+description = "Custom pallet to manage treasury. Forked from FRAME pallet-treasury"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+serde = { version = "1.0.101", optional = true, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false, features = ["derive"] }
+sp-std = { version = "3.0.0", default-features = false}
+sp-runtime = { version = "3.0.0", default-features = false}
+frame-support = { version = "3.0.0", default-features = false}
+frame-system = { version = "3.0.0", default-features = false}
+balances = { version = "1.0.0", default-features = false, path="../balances"}
+did = { version = "1.1.0", default-features = false, path="../did"}
+
+[dev-dependencies]
+sp-core = { default-features = false, version = '3.0.0' }
+sp-storage = { default-features = false, version = '3.0.0' }
+sp-io = { default-features = false, version = '3.0.0' }
+validator_set = { default-features = false, version = '1.0.0', path = '../validator_set'}
+
+[features]
+default = ["std"]
+std = [
+	"serde",
+	"codec/std",
+	"sp-std/std",
+	"sp-runtime/std",
+	"frame-support/std",
+	"frame-system/std",
+	"balances/std",
+	"did/std",
+	"sp-core/std",
+	"sp-storage/std",
+	"sp-io/std",
+	"validator_set/std"
+]

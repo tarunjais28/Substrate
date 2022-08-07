@@ -1,0 +1,48 @@
+[package]
+authors = [ 'Metablockchain' ]
+edition = '2018'
+name = 'tokens'
+version = '1.0.0'
+description = 'Pallet to issue tokens'
+
+[package.metadata.docs.rs]
+targets = ['x86_64-unknown-linux-gnu']
+
+# alias "parity-scale-code" to "codec"
+[dependencies.codec]
+default-features = false
+features = ['derive']
+package = 'parity-scale-codec'
+version = '2.0.0'
+
+[dependencies]
+serde = { version = "1.0.101", optional = true }
+frame-support = { default-features = false, version = '3.0.0' }
+frame-system = { default-features = false, version = '3.0.0' }
+sp-core = { default-features = false, version = '3.0.0' }
+sp-io = { default-features = false, version = '3.0.0' }
+sp-runtime = { default-features = false, version = '3.0.0' }
+sp-std = { default-features = false, version = '3.0.0' }
+did = { default-features = false, version = '1.1.0', path = '../did' }
+vc = { default-features = false, version = '1.0.0', path = '../vc' }
+collective = { default-features = false, version = '1.0.0', path = '../collective' }
+orml-traits = { version = "0.4.0", default-features = false }
+num = { version = "0.4.0", default-features = false }
+
+[dev-dependencies]
+pallet-transaction-payment = { default-features = false, version = '3.0.0' }
+balances = { default-features = false, version = '1.0.0', path = '../balances'}
+validator_set = { default-features = false, version = '1.0.0', path = '../validator_set'}
+
+[features]
+default = ['std']
+std = [
+    "serde",
+    'codec/std',
+    'frame-support/std',
+    'frame-system/std',
+    'validator_set/std',
+    'did/std',
+    'balances/std',
+    'vc/std'
+]

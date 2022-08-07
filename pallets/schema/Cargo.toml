@@ -1,0 +1,38 @@
+[package]
+authors = [ 'Metablockchain' ]
+edition = '2018'
+name = 'schema'
+version = '1.0.0'
+description = 'Pallet to issue VC Schema'
+
+[package.metadata.docs.rs]
+targets = ['x86_64-unknown-linux-gnu']
+
+# alias "parity-scale-code" to "codec"
+[dependencies.codec]
+default-features = false
+features = ['derive']
+package = 'parity-scale-codec'
+version = '2.0.0'
+
+[dependencies]
+serde = { version = "1.0.101", optional = true, features = ["derive"] }
+frame-support = { default-features = false, version = '3.0.0' }
+frame-system = { default-features = false, version = '3.0.0' }
+sp-core = { default-features = false, version = '3.0.0' }
+sp-io = { default-features = false, version = '3.0.0' }
+sp-runtime = { default-features = false, version = '3.0.0' }
+sp-std = { default-features = false, version = '3.0.0' }
+validator_set = { default-features = false, version = '1.0.0', path = '../validator_set'}
+did = { default-features = false, version = '1.1.0', path = '../did'}
+
+[features]
+default = ['std']
+std = [
+    'serde',
+    'codec/std',
+    'frame-support/std',
+    'frame-system/std',
+    'validator_set/std',
+    'did/std'
+]
